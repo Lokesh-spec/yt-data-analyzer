@@ -1,0 +1,237 @@
+[
+  {
+    "kind": "youtube#playlist",
+    "etag": "KUf9EooqqJJH_MMV4gXrcJuPBbw",
+    "id": "PLoSWVnSA9vG8hI-SUpAimvYJrPh-PRRvp",
+    "snippet": {
+      "publishedAt": "2025-04-15T21:10:25.219995Z",
+      "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+      "title": "Stay to Win",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/UPrkC1LdlLY/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/UPrkC1LdlLY/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/UPrkC1LdlLY/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/UPrkC1LdlLY/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/UPrkC1LdlLY/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "MrBeast",
+      "localized": {
+        "title": "Stay to Win",
+        "description": ""
+      }
+    },
+    "contentDetails": {
+      "itemCount": 4
+    },
+    "fetched_at": "2025-06-28T09:11:20.601987"
+  },
+  {
+    "kind": "youtube#playlist",
+    "etag": "3Frt-NNjp7OPhZWD9Mr4MOZW0lQ",
+    "id": "PLoSWVnSA9vG_s-XT40oPKF0iWFGw8pOp2",
+    "snippet": {
+      "publishedAt": "2025-04-15T21:09:25.635561Z",
+      "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+      "title": "Philanthropy",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/SM66GDRyIVY/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/SM66GDRyIVY/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/SM66GDRyIVY/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/SM66GDRyIVY/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/SM66GDRyIVY/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "MrBeast",
+      "localized": {
+        "title": "Philanthropy",
+        "description": ""
+      }
+    },
+    "contentDetails": {
+      "itemCount": 8
+    },
+    "fetched_at": "2025-06-28T09:11:20.601987"
+  },
+  {
+    "kind": "youtube#playlist",
+    "etag": "SxE2gyr10mrbJ-GlUJgopkx3wwM",
+    "id": "PLoSWVnSA9vG8SK6-_45PAu6RVTaP1zXHf",
+    "snippet": {
+      "publishedAt": "2025-04-15T21:08:26.089394Z",
+      "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+      "title": "7 Days",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/bn0Kh9c4Zv4/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/bn0Kh9c4Zv4/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/bn0Kh9c4Zv4/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/bn0Kh9c4Zv4/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/bn0Kh9c4Zv4/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "MrBeast",
+      "localized": {
+        "title": "7 Days",
+        "description": ""
+      }
+    },
+    "contentDetails": {
+      "itemCount": 7
+    },
+    "fetched_at": "2025-06-28T09:11:20.601987"
+  },
+  {
+    "kind": "youtube#playlist",
+    "etag": "HfhZy1cGdg_t2fnnMSS9m5Msa8A",
+    "id": "PLoSWVnSA9vG_PuIrGMfUtJ2wwKSUb2CFd",
+    "snippet": {
+      "publishedAt": "2025-04-15T21:07:31.63142Z",
+      "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+      "title": "$1 vs $$$",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Xj0Jtjg3lHQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Xj0Jtjg3lHQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Xj0Jtjg3lHQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/Xj0Jtjg3lHQ/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/Xj0Jtjg3lHQ/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "MrBeast",
+      "localized": {
+        "title": "$1 vs $$$",
+        "description": ""
+      }
+    },
+    "contentDetails": {
+      "itemCount": 9
+    },
+    "fetched_at": "2025-06-28T09:11:20.601987"
+  },
+  {
+    "kind": "youtube#playlist",
+    "etag": "ulK5-WoV520aDrv86_sLp7rmj2E",
+    "id": "PLoSWVnSA9vG9hJNdgr-81MG59EYT9eEYn",
+    "snippet": {
+      "publishedAt": "2025-04-15T21:06:25.453674Z",
+      "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+      "title": "Most Popular Uploads",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/0e3GPea1Tyg/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/0e3GPea1Tyg/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/0e3GPea1Tyg/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/0e3GPea1Tyg/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/0e3GPea1Tyg/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "MrBeast",
+      "localized": {
+        "title": "Most Popular Uploads",
+        "description": ""
+      }
+    },
+    "contentDetails": {
+      "itemCount": 25
+    },
+    "fetched_at": "2025-06-28T09:11:20.601987"
+  }
+]

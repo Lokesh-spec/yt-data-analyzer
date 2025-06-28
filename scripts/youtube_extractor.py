@@ -1,94 +1,171 @@
 import os
+import time
+import json
 import requests
-from dotenv import load_dotenv
+from datetime import datetime
 from pprint import pprint
+from dotenv import load_dotenv
 
+# ---------------------------- Load Environment Variables ----------------------------
+load_dotenv()
+API_KEY = os.getenv("YOUTUBE_API_KEY")
+CHANNEL_ID = os.getenv("YOUTUBE_CHANNEL_ID")
+CURRENT_DATE_TIME = datetime.now().isoformat()
 
-if __name__ == "__main__":
-    load_dotenv()
-    API_KEY = os.getenv('YOUTUBE_API_KEY')
-    CHANNEL_ID = "UCH26LcOJOd31yw0gIpBJFog"
-
-    channel_url = "https://www.googleapis.com/youtube/v3/channels"
-
-    channel_params = {
-        "part" : "contentDetails",
-        "id" : CHANNEL_ID,
-        "key" : API_KEY
+# GET CHANNEL DETAILS
+def get_channel_info(api_key, channel_id):
+    url = "https://www.googleapis.com/youtube/v3/channels"
+    params = {
+        "part": "snippet,statistics,contentDetails",
+        "id": channel_id,
+        "key": api_key
     }
+    response = requests.get(url, params=params)
+    data = response.json()
+    if "items" in data:
+        channel_info = data["items"][0]
+        channel_info["fetched_at"] = CURRENT_DATE_TIME
+        return channel_info
+    else:
+        raise Exception(f"No channel info found: {data}")
 
-    response = requests.get(channel_url, channel_params)
-    channel_data = response.json()
-
-    uploads_playlist_id = channel_data["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
-
-    # Get Video IDs from Playlist
-    playlist_url = "https://www.googleapis.com/youtube/v3/playlistItems"
-    video_ids = []
+# GET ALL PLAYLISTS
+def get_playlists(api_key, channel_id):
+    url = "https://www.googleapis.com/youtube/v3/playlists"
+    playlists = []
     next_page_token = None
 
     while True:
-        playlist_params = {
-            "part": "snippet",
-            "playlistId": uploads_playlist_id,
-            "maxResults": 50,  
-            "key": API_KEY,
+        params = {
+            "part": "snippet,contentDetails",
+            "channelId": channel_id,
+            "maxResults": 50,
+            "key": api_key,
             "pageToken": next_page_token
         }
-
-        pl_response = requests.get(playlist_url, params=playlist_params)
-        pl_data = pl_response.json()
-
-        for item in pl_data["items"]:
-            video_ids.append(item["snippet"]["resourceId"]["videoId"])
-
-        next_page_token = pl_data.get("nextPageToken")
+        res = requests.get(url, params=params)
+        data = res.json()
+        items = data.get("items", [])
+        for item in items:
+            item["fetched_at"] = CURRENT_DATE_TIME
+        playlists.extend(items)
+        next_page_token = data.get("nextPageToken")
         if not next_page_token:
             break
-    
-    for video_id in video_ids:
-        print(video_id)
+        time.sleep(0.1)
+    return playlists
 
-    print(len(video_ids))
-    
-    # comments_thread_url = "https://www.googleapis.com/youtube/v3/commentThreads"
+# GET VIDEOS FROM PLAYLIST
+def get_videos_from_playlist(api_key, playlist_id):
+    url = "https://www.googleapis.com/youtube/v3/playlistItems"
+    videos = []
+    next_page_token = None
 
-    # for video_id in video_ids:
-    #     comments_thread_params = {
-    #         "part" : "snippet,replies",
-    #         "videoId" : video_id,
-    #         "maxRecords" : 50,
-    #         "key" : API_KEY
-    #     }
-    #     comments_thread_response = requests.get(comments_thread_url, params=comments_thread_params)
-    #     comments_thread_data = comments_thread_response.json()
+    while True:
+        params = {
+            "part": "snippet",
+            "playlistId": playlist_id,
+            "maxResults": 50,
+            "key": api_key,
+            "pageToken": next_page_token
+        }
+        res = requests.get(url, params=params)
+        data = res.json()
+        items = data.get("items", [])
+        for item in items:
+            item["fetched_at"] = CURRENT_DATE_TIME
+        videos.extend(items)
+        next_page_token = data.get("nextPageToken")
+        if not next_page_token:
+            break
+        time.sleep(0.1)
+    return videos
 
-    #     pprint(comments_thread_data)
-    #     break
-    # video_url = "https://www.googleapis.com/youtube/v3/videos"
+# GET VIDEO STATISTICS
+def get_video_stats(api_key, video_ids):
+    url = "https://www.googleapis.com/youtube/v3/videos"
+    video_data = []
 
-    # for video_id in video_ids:
-    
-    #     video_params = {
-    #         "part": "snippet,statistics",
-    #         "id": video_id,
-    #         "key": API_KEY
-    #     }
+    def chunked(lst, size):
+        for i in range(0, len(lst), size):
+            yield lst[i:i + size]
 
-    #     video_response = requests.get(video_url, params=video_params)
-    #     video_data = video_response.json()
+    for chunk in chunked(video_ids, 50):
+        params = {
+            "part": "snippet,statistics,contentDetails",
+            "id": ",".join(chunk),
+            "key": api_key
+        }
+        res = requests.get(url, params=params)
+        data = res.json()
+        for item in data.get("items", []):
+            item["fetched_at"] = CURRENT_DATE_TIME
+            video_data.append(item)
+        time.sleep(0.1)
 
-    #     # print(video_data)
+    return video_data
 
-    #     # Print Results
-    #     for video in video_data["items"]:
-    #         title = video["snippet"]["title"]
-    #         views = video["statistics"].get("viewCount", "N/A")
-    #         likes = video["statistics"].get("likeCount", "N/A")
-    #         comments = video["statistics"].get("commentCount", "N/A")
+# MAIN LOGIC
+if __name__ == "__main__":
+    if not API_KEY:
+        print("Missing YOUTUBE_API_KEY in .env")
+        exit(1)
 
-    #         print(f"Title: {title}")
-    #         print(f"Views: {views}")
-    #         print(f"Likes: {likes}")
-    #         print(f"Comments: {comments}")
-    #         print("-" * 40)
+    # Channel Metadata
+    channel_info = get_channel_info(API_KEY, CHANNEL_ID)
+    pprint(f"Channel Info:\n{channel_info['snippet']['title']} - {channel_info['statistics']}")
+
+    # Playlists
+    playlists = get_playlists(API_KEY, CHANNEL_ID)
+    print(f"Found {len(playlists)} playlists.")
+
+    all_videos = {}
+    video_ids_set = set()
+
+    for playlist in playlists:
+        playlist_id = playlist["id"]
+        title = playlist["snippet"]["title"]
+        print(f"Playlist: {title} ({playlist_id})")
+
+        playlist_videos = get_videos_from_playlist(API_KEY, playlist_id)
+
+        video_ids = [
+            item["snippet"]["resourceId"]["videoId"]
+            for item in playlist_videos
+            if "resourceId" in item["snippet"]
+        ]
+
+        for vid in video_ids:
+            video_ids_set.add(vid)
+
+        all_videos[playlist_id] = {
+            "playlist_title": title,
+            "video_ids": video_ids,
+            "fetched_at": CURRENT_DATE_TIME
+        }
+
+    print(f"Unique Videos Collected: {len(video_ids_set)}")
+
+    # Video-Level Data
+    video_details = get_video_stats(API_KEY, list(video_ids_set))
+    print(f"Video Metadata Retrieved: {len(video_details)}")
+
+    # Save to JSON files
+    os.makedirs("data", exist_ok=True)
+
+    with open("data/channel_info.json", "w", encoding="utf-8") as f:
+        json.dump(channel_info, f, indent=2)
+
+    with open("data/playlists.json", "w", encoding="utf-8") as f:
+        json.dump(playlists, f, indent=2)
+
+    with open("data/playlist_videos.json", "w", encoding="utf-8") as f:
+        json.dump(all_videos, f, indent=2)
+
+    with open("data/video_details.json", "w", encoding="utf-8") as f:
+        json.dump(video_details, f, indent=2)
+
+    # Preview one video
+    if video_details:
+        print("Sample Video Data:")
+        pprint(video_details[0])
