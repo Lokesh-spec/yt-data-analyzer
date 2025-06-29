@@ -15,7 +15,6 @@ gcp/gcp-key.json
 # Ignore environment files or docker-compose overrides if any
 .env
 .venv/
-docker-compose.override.yml
 
 # Ignore VSCode or other IDE config folders
 .vscode/
