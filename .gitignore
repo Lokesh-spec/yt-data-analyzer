@@ -21,12 +21,6 @@ docker-compose.override.yml
 .vscode/
 .idea/
 
-<<<<<<< HEAD
-=======
-# Ignore local csv files if not needed
-dags/*.csv
-
->>>>>>> b7aa86a001fd2e109d73114c361a74d1e54c767b
 # Ignore system files
 .DS_Store
 Thumbs.db
