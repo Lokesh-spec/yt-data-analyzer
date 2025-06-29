@@ -52,8 +52,6 @@ x-airflow-common:
     postgres:
       condition: service_healthy
 
-# ⬇️ Remainder of the file stays unchanged
-# All airflow-* services will now inherit access to /opt/airflow/data from above
 
 services:
   postgres:
