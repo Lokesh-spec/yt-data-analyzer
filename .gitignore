@@ -1,2 +1,38 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Airflow logs (all logs folder)
+logs/
+
+# Ignore local data if you don't want to track it
+raw_data_layer/
+
+# Ignore sensitive GCP key file
+gcp/gcp-key.json
+
+# Ignore environment files or docker-compose overrides if any
 .env
-.venv
+.venv/
+docker-compose.override.yml
+
+# Ignore VSCode or other IDE config folders
+.vscode/
+.idea/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Python egg and build files
+*.egg-info/
+dist/
+build/
+
+# Ignore pycache folders anywhere
+**/**
+
+# Ignore specific DAG files if needed
+dags/api_to_mysql_dag.py
+dags/upload_to_gcs.py
