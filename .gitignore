@@ -32,7 +32,3 @@ build/
 
 # Ignore pycache folders anywhere
 **/**
-
-# Ignore specific DAG files if needed
-dags/api_to_mysql_dag.py
-dags/upload_to_gcs.py
